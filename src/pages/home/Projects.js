@@ -21,7 +21,7 @@ const Projects = () => {
         title="Siallure E-commerce (Development Stage)"
         description="Siallure is an e-commerce platform created to feature handmade earrings. Our goal is to provide a smooth shopping experience for customers looking for distinctive and personalized accessories. While the project is currently in development, it's aimed at preparing for real-world usage.
         "
-        stack="HTML,SCSS,React,Express.js,MySQL"
+        stack="HTML,SCSS,React,Express.js,MySQL,Stripe"
       ></Project>
       <Project
         githubURL="https://github.com/nerginov/World-Countries"
