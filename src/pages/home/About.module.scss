@@ -1,0 +1,213 @@
+@use "../../variables.scss" as var;
+@import "../../mixins.scss";
+.about {
+  display: flex;
+  gap: 8rem;
+  align-items: center;
+  height: 80vh;
+  @include media(phone) {
+    height: auto;
+  }
+  @include media(tablet) {
+    gap: 6rem;
+  }
+
+  .img-container {
+    margin-bottom: 5rem;
+
+    &:hover {
+      .img-border::after {
+        box-shadow: var.$box-shadow-green;
+        left: 3.2rem;
+        top: 2.2rem;
+        transition: all 0.3s ease-in-out;
+      }
+      img {
+        left: -0.2rem;
+        top: -0.2rem;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+    &:active {
+      .img-border::after {
+        left: 3rem;
+        top: 2rem;
+      }
+      img {
+        left: 0rem;
+        top: 0rem;
+      }
+    }
+    img {
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+      left: 0;
+      top: 0;
+      //setting to 0, to be able to create smooth hover transition
+      z-index: 1;
+      width: auto;
+      height: 30rem;
+      border-radius: 0.5rem;
+      position: relative;
+    }
+    .img-border {
+      position: relative;
+      width: max-content;
+      &::after {
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        content: "";
+        position: absolute;
+        border-radius: 0.5rem;
+        border: 0.7rem solid var.$accent-color;
+        height: 30rem;
+        width: 100%;
+        left: 3rem;
+        top: 2rem;
+      }
+    }
+  }
+  .text-container {
+    @include media(phone) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    vertical-align: middle;
+    h2 {
+      opacity: 0;
+      font-size: var.$small-header;
+      margin-bottom: 2rem;
+      @include media(phone) {
+        text-align: center;
+        font-size: var.$xlarge-header;
+        margin-bottom: 5rem;
+      }
+    }
+    p {
+      opacity: 0;
+
+      margin-bottom: 2rem;
+      color: var.$secondary-color;
+      word-wrap: break-word;
+      max-width: 55ch;
+      font-size: var.$medium-text;
+      span {
+        font-weight: bold;
+      }
+    }
+    button {
+      font-size: var.$medium-text;
+      font-weight: bold;
+      appearance: none;
+      border: none;
+      background: none;
+      padding: 1.5rem 3.5rem;
+      border-radius: 0.5rem;
+      @include media(phone) {
+        padding: 1.5rem 3rem;
+      }
+
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.02) !important;
+      }
+      &:active {
+        transform: scale(1) !important;
+      }
+    }
+    .linkedin {
+      opacity: 0;
+      background: linear-gradient(
+        to right,
+        var.$accent-color,
+        var.$accent-color-darker
+      );
+      color: var.$primary-color;
+      margin-right: 2rem;
+      &:focus {
+        outline-color: white;
+      }
+      &:hover {
+        background: linear-gradient(
+          to right,
+          var.$accent-color-darker,
+          var.$accent-color
+        );
+      }
+    }
+    .github {
+      opacity: 0;
+      color: var.$primary-color;
+      border: 1px solid var.$accent-color;
+      &:hover {
+        box-shadow: var.$box-shadow-green;
+      }
+      &:focus {
+        outline-color: var.$accent-color;
+      }
+    }
+  }
+}
+
+//animations
+.intersectedAbout {
+  .img-container {
+    img {
+      animation: imgAnimation 1s ease-in-out forwards;
+    }
+
+    .img-border::after {
+      animation: borderAnimation 0.8s ease-in-out forwards;
+    }
+  }
+  .text-container {
+    h2 {
+      animation: textSlideIn 0.5s ease-in-out forwards;
+    }
+    p {
+      animation: textSlideIn 0.5s ease-in-out 0.5s forwards;
+    }
+
+    .linkedin {
+      animation: textSlideIn 0.5s ease-in-out 1s forwards;
+    }
+    .github {
+      animation: textSlideIn 0.5s ease-in-out 1.5s forwards;
+    }
+  }
+
+  @keyframes imgAnimation {
+    0% {
+      opacity: 50;
+      transform: translate(1rem, 1rem);
+    }
+    100% {
+      opacity: 100;
+      transform: translate(0rem, 0rem);
+    }
+  }
+
+  @keyframes borderAnimation {
+    0% {
+      transform: translate(-2rem, -1rem);
+    }
+    100% {
+      opacity: 100;
+      transform: translate(0rem, 0rem);
+    }
+  }
+
+  @keyframes textSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(5rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+  }
+}

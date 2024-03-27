@@ -1,0 +1,91 @@
+@use "../variables.scss" as var;
+@import "../mixins.scss";
+.sidebar {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 10rem;
+  background: linear-gradient(
+    to right,
+    var.$accent-color,
+    var.$accent-color-darker
+  );
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+
+  ul {
+    li {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      height: 7rem;
+      width: 5rem;
+      font-weight: bold;
+      cursor: pointer;
+      @include media(phone) {
+        width: 4rem;
+      }
+      p {
+        transition: transform 0.5s ease-in-out;
+        position: absolute;
+        transform: translateX(5rem) rotate(180deg);
+        writing-mode: vertical-rl; /* Vertical writing mode, from bottom to top */
+        white-space: nowrap;
+      }
+      img {
+        transition: transform 0.5s ease-in-out;
+      }
+
+      &:not(:last-of-type) {
+        border-bottom: 1px solid var.$accent-color;
+      }
+      a {
+        color: var.$primary-color;
+        font-size: var.$tiny-text;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+      a:hover {
+        img {
+          transform: translateX(-5rem);
+          transition: transform 0.5s ease-in-out;
+        }
+        p {
+          display: block;
+          transform: translateX(0rem) rotate(180deg);
+          transition: transform 0.5s ease-in-out;
+        }
+      }
+    }
+  }
+  animation: slidein 0.5s ease-in-out;
+  @keyframes slidein {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+.slideOut {
+  animation: slideout 0.5s ease-in-out;
+}
+@keyframes slideout {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}

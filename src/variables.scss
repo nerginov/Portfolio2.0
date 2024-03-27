@@ -1,0 +1,27 @@
+//colors
+$primary-background-color: #101630; //main background app
+$primary-color: #ffffff; //used for background and main-text
+$secondary-color: #bfc1c5; //used for text
+$tertiary-color: #000000; // used for text
+$accent-color: #81b29a;
+$accent-color-darker: #4c7f5f;
+$error-color: rgba(211, 47, 47, 0.75);
+
+@function accent-color-alpha($alpha) {
+  @return rgba(129, 178, 154, $alpha);
+}
+
+//font-sizes
+$tiny-text: 1.2rem;
+$small-text: 1.4rem;
+$medium-text: 1.6rem;
+$large-text: 1.8rem;
+$tiny-header: 2rem;
+$small-header: 2.4rem;
+$large-header: 3rem;
+$xlarge-header: 3.6rem;
+$xxlarge-header: 4.6rem;
+
+//box-shadow
+$box-shadow-green: 0 0 10px rgba(76, 127, 95, 0.5),
+  0 0 20px rgba(76, 127, 95, 0.5) inset, 0 0 10px rgba(129, 178, 154, 0.5);

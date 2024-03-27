@@ -1,0 +1,89 @@
+@use "../variables.scss" as var;
+@import "../mixins.scss";
+.navbar {
+  width: 100%;
+  margin-top: 3rem;
+  animation: navbarAnimation 0.7s ease-in-out;
+  @include media(phone) {
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    margin-top: 0rem;
+  } // hide navbar but still persist in the flow to use the intersection observer for sidebar
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15rem;
+    @include media(tablet) {
+      gap: 5rem;
+    }
+    @include media(medium) {
+      gap: 10rem;
+    }
+    li {
+      list-style: none;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+        transform: scale(1);
+      }
+      a {
+        font-size: var.$large-text;
+        font-weight: bold;
+        color: var.$primary-color;
+        text-decoration: none;
+        &:hover {
+          color: var.$accent-color;
+          transform: scale(1.05);
+        }
+        &:focus {
+          outline-color: var.$accent-color;
+        }
+      }
+    }
+
+    li:last-of-type {
+      background: linear-gradient(
+        to right,
+        var.$accent-color,
+        var.$accent-color-darker
+      );
+      padding: 1rem 2.2rem;
+      border-radius: 0.5rem;
+
+      a {
+        width: 100%;
+        height: 100%;
+      }
+      &:hover {
+        background: linear-gradient(
+          to right,
+          var.$accent-color-darker,
+          var.$accent-color
+        );
+        opacity: 0.9;
+        transform: scale(1.05);
+        a {
+          color: var.$primary-color;
+        }
+      }
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+}
+@keyframes navbarAnimation {
+  0% {
+    // transform: translateY(-1rem);
+    opacity: 0.4;
+  }
+  100% {
+    // transform: translateY(0rem);
+    opacity: 1;
+  }
+}

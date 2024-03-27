@@ -1,0 +1,346 @@
+@use "../../variables.scss" as var;
+@import "../../mixins.scss";
+.contact {
+  opacity: 0;
+  position: relative;
+  z-index: 2;
+  border-radius: 1rem;
+  display: flex;
+  margin-inline: 10rem; //adding extra padding to the HOME padding
+  margin-bottom: 15rem;
+  margin-top: 15rem;
+  @include media(phone) {
+    flex-direction: column;
+    margin-inline: 0rem;
+  }
+  @include media(tablet) {
+    margin-inline: 0rem;
+  }
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    content: url(../../assets/circle.svg);
+    top: -4rem;
+    left: -15rem;
+    width: 30rem;
+    height: 30rem;
+    opacity: 0.8;
+  } //top left circle
+  &::after {
+    position: absolute;
+    z-index: -1;
+    content: url(../../assets/circle.svg);
+    bottom: -9rem;
+    right: -10rem;
+    width: 30rem;
+    height: 30rem;
+    opacity: 0.8;
+  } //bottom right circle
+  &-left {
+    @include media(tablet) {
+      max-width: 50%;
+      padding-inline: 2rem;
+    }
+    overflow-y: hidden;
+    position: relative;
+    border-top-left-radius: 1rem !important;
+    border-bottom-left-radius: 1rem !important;
+    padding: 4rem;
+    background: var.$primary-color;
+    color: var.$tertiary-color;
+
+    &::after {
+      z-index: 1;
+      position: absolute;
+      content: url(../../assets/circle.svg);
+      bottom: -10rem;
+      right: 1rem;
+      width: 20rem;
+      height: 20rem;
+      opacity: 0.6;
+    } // left inside circle
+    h2 {
+      color: var.$accent-color;
+      font-size: var.$small-header;
+      margin-bottom: 4rem;
+    }
+    p {
+      max-width: 55ch;
+      font-size: var.$medium-text;
+      color: var.$tertiary-color;
+      font-weight: 400;
+    }
+    a {
+      height: min-content;
+      width: min-content;
+      img {
+        margin-top: 1rem;
+        height: 2rem;
+        cursor: pointer;
+      }
+    }
+  }
+  &-right {
+    @include media(phone) {
+      border-radius: 1rem !important;
+      padding: 2rem;
+      p {
+        margin-bottom: 2rem;
+        font-size: 1.6rem;
+      }
+    }
+
+    @include media(tablet) {
+      max-width: 50%;
+      padding-inline: 2rem;
+    }
+
+    // overflow: hidden;
+    border-top-right-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+    padding: 4rem;
+    // overflow: hidden;
+    position: relative;
+    background: linear-gradient(
+      to right,
+      var.$accent-color,
+      var.$accent-color-darker
+    );
+    &::after {
+      position: absolute;
+      z-index: 1;
+      content: url(../../assets/circle.svg);
+      bottom: 25rem;
+      right: 0rem;
+      width: 15rem;
+      height: 15rem;
+      opacity: 0.7;
+    } //right inside circle
+
+    h2 {
+      color: var.$primary-color;
+      font-size: var.$small-header;
+      margin-bottom: 4rem;
+      @include media(phone) {
+        margin-bottom: 2rem;
+      }
+    }
+    &::before {
+      @include media(phone) {
+        width: 0;
+        height: 0;
+      }
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background-color: var.$accent-color;
+      transform: rotate(45deg);
+      top: 5rem;
+      left: -1.3rem;
+    } //the little tick between contact contents
+    form {
+      @include media(phone) {
+        display: flex;
+        flex-direction: column;
+      }
+      @include media(tablet) {
+        display: flex;
+        flex-direction: column;
+      }
+      display: grid;
+      grid-template-areas:
+        "name lastName"
+        "email email"
+        "subject subject"
+        "button button";
+      grid-column-gap: 1.5rem;
+      grid-row-gap: 1.5rem;
+      .input-container {
+        border-radius: 1rem;
+        width: max-content;
+        height: max-content;
+        position: relative;
+        @include media(phone) {
+          width: 100%;
+        }
+        @include media(tablet) {
+          width: 100%;
+        }
+      }
+
+      .form-control {
+        @include media(phone) {
+          width: 100%;
+        }
+        @include media(tablet) {
+          width: 100%;
+        }
+        position: relative;
+        z-index: 2;
+        border-radius: 0.5rem;
+        appearance: none;
+        border: 2px solid var.$primary-color;
+        padding: 2rem;
+        background-color: transparent;
+        color: var.$primary-color;
+        font-size: var.$medium-text;
+        font-weight: bold;
+
+        &::placeholder {
+          font-size: var.$small-text;
+          color: var.$primary-color;
+          font-weight: bold;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px white, 0 0 2px white inset, 0 0 5px white;
+        }
+      }
+      #name {
+        grid-area: name;
+        position: relative;
+      }
+
+      #lastName {
+        grid-area: lastName;
+      }
+      #email {
+        grid-area: email;
+      }
+      .subject-container {
+        border-radius: 1rem;
+        position: relative;
+        grid-area: subject;
+        z-index: 2;
+
+        #subject {
+          width: 100%;
+          border: 2px solid var.$primary-color;
+          border-radius: 0.5rem;
+          resize: vertical;
+          color: var.$primary-color;
+          font-size: var.$medium-text;
+          appearance: none;
+          background-color: transparent;
+          padding: 2rem;
+          font-weight: bold;
+
+          &::placeholder {
+            color: var.$primary-color;
+            font-weight: bold;
+            font-size: var.$small-text;
+          }
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 5px white, 0 0 2px white inset, 0 0 5px white;
+          }
+        }
+      }
+      button {
+        cursor: pointer;
+        position: relative;
+        border-radius: 0.5rem;
+        grid-area: button;
+        appearance: none;
+        border: none;
+        background: var.$primary-color;
+        color: var.$accent-color;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+        font-weight: bold;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        span {
+          position: absolute;
+          font-size: var.$medium-text;
+          transform: translateY(4rem);
+          transition: transform 0.5s ease-in-out;
+        }
+        img {
+          transition: transform 0.5s ease-in-out;
+        }
+      }
+      button:hover {
+        span {
+          transform: translateY(0rem);
+          transition: transform 0.5s ease-in-out;
+        }
+        img {
+          transform: translateY(-4rem);
+          transition: transform 0.5s ease-in-out;
+        }
+      }
+      button:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+  label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+  }
+  .error {
+    animation: pulsate 1s infinite !important;
+    z-index: 10;
+    position: absolute !important;
+    color: var.$error-color;
+    font-size: var.$tiny-text;
+    text-wrap: nowrap;
+    bottom: 0.8rem;
+    right: 1rem;
+    font-weight: bold;
+
+    @keyframes pulsate {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.03);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+  .error-shadow:focus {
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.3),
+      0 0 2px rgba(211, 47, 47, 0.3) inset, 0 0 5px rgba(211, 47, 47, 0.3) !important;
+  }
+}
+
+.intersectedContact {
+  animation: contactSlideIn 0.8s ease-in-out forwards;
+  @keyframes contactSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var.$accent-color;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

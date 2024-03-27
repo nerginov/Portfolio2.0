@@ -1,0 +1,29 @@
+@use "./variables.scss" as var;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Barlow", sans-serif;
+}
+body,
+button,
+a {
+  font-family: "Inter", sans-serif;
+}
+html {
+  color: var.$primary-color;
+  background-color: var.$primary-background-color;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}

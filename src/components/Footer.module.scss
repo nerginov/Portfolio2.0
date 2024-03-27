@@ -1,0 +1,50 @@
+@use "../variables.scss" as var;
+@import "../mixins.scss";
+footer {
+  padding: 4rem 0;
+  .navigation {
+    width: 100%;
+
+    ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      @include media(phone) {
+        gap: 1rem;
+      }
+      li {
+        list-style: none;
+        &:not(:last-of-type) {
+          border-right: 1px solid var.$secondary-color;
+        }
+        a {
+          color: var.$secondary-color;
+          font-size: var.$small-text;
+          text-decoration: none;
+          cursor: pointer;
+          &:hover {
+            color: var.$accent-color;
+          }
+          &:focus {
+            outline-color: var.$primary-color;
+          }
+        }
+      }
+      li:not(:last-of-type) {
+        padding-right: 2rem;
+        @include media(phone) {
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
+  .copyright {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .copyright p {
+    font-size: var.$small-text;
+    color: var.$secondary-color;
+  }
+}

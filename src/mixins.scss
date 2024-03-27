@@ -1,0 +1,22 @@
+@mixin media($breakpoint) {
+  @if ($breakpoint==phone) {
+    @media only screen and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == tablet) {
+    @media only screen and (min-width: 767px) and (max-width: 1200px) {
+      @content;
+    }
+  } //include very small laptops
+  @if ($breakpoint == medium) {
+    @media only screen and (min-width: 1201px) and (max-width: 1439px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == large) {
+    @media only screen and (min-width: 1440px) {
+      @content;
+    }
+  }
+}

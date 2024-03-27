@@ -1,0 +1,11 @@
+@use "../../variables.scss" as var;
+
+.projects {
+  //   padding-inline: 5rem; //adding extra to home padding
+  margin-top: 10rem;
+  h1 {
+    text-align: center;
+    font-size: var.$xlarge-header;
+    margin-bottom: 10rem;
+  }
+}

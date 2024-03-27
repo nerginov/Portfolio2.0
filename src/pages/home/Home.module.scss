@@ -1,0 +1,39 @@
+@import "../../mixins.scss";
+.home {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  padding-inline: 14%;
+
+  @include media(phone) {
+    padding-inline: 5rem;
+  }
+  @include media(tablet) {
+    padding-inline: 7rem;
+  }
+  @include media(medium) {
+    padding-inline: 10rem;
+  }
+
+  // padding-inline: 10%;
+  .home-circle {
+    animation: slideCircle 0.8s ease-in-out;
+    opacity: 0.8;
+    position: absolute;
+    top: 25rem;
+    right: -30rem;
+    width: 50rem;
+    @include media(phone) {
+      width: 30rem;
+      right: -18rem;
+    }
+  }
+}
+@keyframes slideCircle {
+  0% {
+    transform: translateX(25rem);
+  }
+  100% {
+    transform: translateX(0rem);
+  }
+}
